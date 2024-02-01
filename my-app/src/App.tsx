@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface Task {
+  title: string,
+  isDone: boolean,
+  description: string
 }
 
-export default App;
+class TodoItem extends React.Component<Task, {}> {
+  const [count: number, setCount] = setState(0);
+  constructor(props: Task) {
+    super(props);
+    this.state = props;
+    this.toggleDone = this.toggleDone.bind(this);
+  }
+
+  toggleDone() {
+    this.setState(prevState => ({ isDone: !prevState.isDone }));
+  }
+
+  render() {
+    const doneString: string = (this.state.isDone) ? "completed" : "uncompleted";
+    return (
+      <div className={"TodoItem " + doneString} >
+        <h1>{this.state.isDone.toString()}</h1>
+        <button onClick={() => }></button>
+      </div>
+    );
+  }
+}
+
+const currentTask = {
+  title: "Program",
+  isDone: false,
+  description: "Learn more of React and Typescript"
+};
+
+let item: TodoItem = new TodoItem(currentTask);
+
+export default item.render;
